@@ -1,0 +1,33 @@
+class TuringMachine:
+    def __init__(self, program, initial_state):
+        self.tape = [0] * 100  # Бесконечная лента, инициализированная нулями
+        self.pointer = 0  # Указатель на текущую ячейку
+        self.state = initial_state  # Начальное состояние
+        self.program = program  # Программа машины Тьюринга
+
+    def step(self):
+        current_symbol = self.tape[self.pointer]  # Считываем символ с текущей ячейки
+        new_symbol, move, new_state = self.program[(current_symbol, self.state)]  # Получаем инструкции из программы
+        self.tape[self.pointer] = new_symbol  # Записываем новый символ
+        if move == 'R':
+            self.pointer += 1  # Двигаемся вправо
+        elif move == 'L':
+            self.pointer -= 1  # Двигаемся влево
+        self.state = new_state  # Обновляем состояние
+
+    def run(self, steps):
+        for _ in range(steps):
+            self.step()
+        print(self.tape)  # Выводим состояние ленты после выполнения программы
+
+
+# Пример использования
+program = {
+    (0, 'A'): (1, 'R', 'A'),  # Если текущий символ 0 и состояние A, то пишем 1, двигаемся вправо и остаёмся в состоянии A
+    (1, 'A'): (0, 'L', 'B'),  # Если текущий символ 1 и состояние A, то пишем 0, двигаемся влево и переходим в состояние B
+    (0, 'B'): (1, 'R', 'HALT'),  # Пример простой программы, которая инвертирует все биты на ленте
+    (1, 'B'): (0, 'L', 'B'),
+}
+
+tm = TuringMachine(program, 'A')
+tm.run(10)  # Запускаем машину Тьюринга на 10 шагов
