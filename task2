@@ -1,0 +1,55 @@
+class Vehicles:
+    def __init__(self, name, speed):
+        self.name = name
+        self.speed = speed
+
+    def printVehicles(self):
+        print(f"Тип транспортного средства: {self.name}")
+        print(f"Максимальная скорость: {self.speed} км/ч")
+
+    def __del__(self):
+        print(f"{self.name} был утилизирован")
+
+class Car(Vehicles):
+    def __init__(self, name, speed, brand, model):
+        super().__init__(name, speed)
+        self.brand = brand
+        self.model = model
+
+    def printCar(self):
+        super().printVehicles()
+        print(f"Марка: {self.brand}")
+        print(f"Модель: {self.model}")
+
+class Truck(Vehicles):
+    def __init__(self, name, speed, liftingCapacity):
+        super().__init__(name, speed)
+        self.liftingCapacity = liftingCapacity
+
+    def printTruck(self):
+        super().printVehicles()
+        print(f"Грузоподъемность: {self.liftingCapacity} тонн")
+
+class Steamboat(Vehicles):
+    def __init__(self, name, speed, displacement):
+        super().__init__(name, speed)
+        self.displacement = displacement
+
+    def printSteamboat(self):
+        super().printVehicles()
+        print(f"Водоизмещение: {self.displacement} тонн")
+
+class Plane(Vehicles):
+    def __init__(self, name, speed, wingspan):
+        super().__init__(name, speed)
+        self.wingspan = wingspan
+
+    def printPlane(self):
+        super().printVehicles()
+        print(f"Размах крыльев: {self.wingspan} м")
+
+
+автомобиль1 = Car("Автомобиль", 200, "Volvo", "XC90")
+грузовик1 = Truck("Грузовик", 120, 20)
+пароход1 = Steamboat("Пароход", 80, 5000)
+самолет1 = Plane("Самолет", 900, 50)
