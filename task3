@@ -1,0 +1,40 @@
+class Car(Vehicles):
+    def __init__(self, name, speed, brand, model):
+        super().__init__(name, speed)
+        self.brand = brand
+        self.model = model
+
+    def display_info(self):
+        super().printVehicles()
+        print(f"Марка: {self.brand}")
+        print(f"Модель: {self.model}")
+
+
+class Truck(Vehicles):
+    def __init__(self, name, speed, liftingCapacity):
+        super().__init__(name, speed)
+        self.liftingCapacity = liftingCapacity
+
+    def display_info(self):
+        super().printVehicles()
+        print(f"Грузоподъемность: {self.liftingCapacity} тонн")
+
+
+class Steamboat(Vehicles):
+    def __init__(self, name, speed, displacement):
+        super().__init__(name, speed)
+        self.displacement = displacement
+
+    def display_info(self):
+        super().printVehicles()
+        print(f"Водоизмещение: {self.displacement} тонн")
+
+
+class Plane(Vehicles):
+    def __init__(self, name, speed, wingspan):
+        super().__init__(name, speed)
+        self.wingspan = wingspan
+
+    def display_info(self):
+        super().printVehicles()
+        print(f"Размах крыльев: {self.wingspan} м")
